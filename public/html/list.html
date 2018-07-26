@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>职位列表</title>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+	#_file,#modify_file{
+		position:absolute;
+		top:46px;
+		left:20px;
+		font-size: 12px;
+	}
+	.position_body img{
+		width: 50px;
+		height: 50px;
+	}
+	
+</style>
+<body>
+		
+<div  class="container header"></div>
+  <div class="container">
+  	<div class="row">
+  		<h4 class="col-md-11">职位管理</h4>
+  		<div class="col-md-1">
+  		  <input class="btn btn-default btn-primary btn_add_position" data-toggle="modal" data-target="#add" type="button" value="添加">
+  		</div>
+  		<p>&nbsp;</p>
+	
+  	</div>
+  </div>
+
+    <div class="container">
+              <table class="table table-bordered table-hover table-responsive text-center">
+                  <thead class="text-center">
+                  <div class="row">
+                    <th class="col-md-0.5">序号</th>
+                    <th class="col-md-1">公司logo</th>
+                    <th class="col-md-1">职位名称</th>
+                    <th class="col-md-1">公司名称</th>
+                    <th class="col-md-1.5">工作经验</th>
+                    <th class="col-md-1">职位类型</th>
+                    <th class="col-md-1.5">工作地点</th>
+                    <th class="col-md-1.5">职位薪资</th>
+                    <th class="col-md-1.5" colspan="2">操作</th>
+                   </div>
+                  </thead>
+                <tbody class="position_body"></tbody> 
+              </table>
+     </div>
+     
+      <!--分页按钮-->
+      <div class="container" style="text-align:right;">
+            <nav aria-label="Page navigation">
+	            <ul class="pagination btn_pages_body"></ul>
+           </nav>
+      </div>
+ 
+<!--添加模态框-->
+<div class="modal fade" id="add">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <h4 class="modal-title" id="add_Modal">职位信息</h4>
+            </div>
+            
+            <div class="modal-body">
+                <form class="add_position_form">
+                    <div class="form-group">
+                        <label for="1">公司logo</label>
+                        <input type="text" class="form-control" id="1" >
+                        <input type="file" id="_file" name="logo"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="2">职位名称 </label>
+                        <input type="text" class="form-control" id="2" name="name" placeholder="请输入职位名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="3">公司名称</label>
+                        <input type="text" class="form-control" id="3" name="company" placeholder="请输入公司名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="4">工作经验</label>
+                        <input type="text" class="form-control" id="4" name="exprience" placeholder="请输入工作经验">
+                    </div>
+                    <div class="form-group">
+                        <label for="5">职位类型</label>
+                        <input type="text" class="form-control" id="5" name="position_type" placeholder="请输入工作经验">
+                    </div>
+                    <div class="form-group">
+                        <label for="6">工作地点</label>
+                        <input type="text" class="form-control" id="6" name="address" placeholder="请输入工作经验">
+                    </div>
+                    <div class="form-group">
+                        <label for="4">岗位工资</label>
+                        <input type="text" class="form-control" id="7" name="salary" placeholder="请输入岗位薪资">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="btn_submit">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--修改模态框-->
+<div class="modal fade" id="modify">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <h4 class="modal-title " >职位信息</h4>
+            </div>
+            
+            <div class="modal-body">
+                <form class="modify_position_form">
+                	
+                    <div class="form-group">
+                        <label for="modify_1">公司logo</label>
+                        <input type="text" class="form-control" id="modify_1" >
+                        <input type="file" id="modify_file" name="logo"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="modify_2">职位名称 </label>
+                        <input type="text" class="form-control" id="modify_2" name="name" placeholder="请输入职位名称">
+                         <input type="text" id="m_id" name="_id" style="display:none;"/>
+                          <input type="text" id="m_logo" name="_logo" style="display:none;"/>
+                    </div>
+              
+                    <div class="form-group">
+                        <label for="modify_3">公司名称</label>
+                        <input type="text" class="form-control" id="modify_3" name="company" placeholder="请输入公司名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="modify_4">工作经验</label>
+                        <input type="text" class="form-control" id="modify_4" name="exprience" placeholder="请输入工作经验">
+                    </div>
+                    <div class="form-group">
+                        <label for="modify_5">职位类型</label>
+                        <input type="text" class="form-control" id="modify_5" name="position_type" placeholder="请输入工作经验">
+                    </div>
+                    <div class="form-group">
+                        <label for="modify_6">工作地点</label>
+                        <input type="text" class="form-control" id="modify_6" name="address" placeholder="请输入工作经验">
+                    </div>
+                    <div class="form-group">
+                        <label for="modify_7">岗位工资</label>
+                        <input type="text" class="form-control" id="modify_7" name="salary" placeholder="请输入岗位薪资">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+              
+                <button type="button" class="btn btn-primary" id="modifyPosition_submit">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="position_row_template">
+	{{each positions p a}}
+	  <tr>
+	     <td>{{a + index +1}}</td>
+	  	 <td><img src="{{p.logo}}"/></td>
+	  	 <td>{{p.name}}</td>
+	  	 <td>{{p.company}}</td>
+	  	 <td>{{p.exprice}}</td>
+	  	 <td>{{p.position_type}}</td>
+	  	 <td>{{p.address}}</td>
+	  	 <td>{{p.salary}}</td>
+	  	 <td><a href="#" class="modify_link" data-id="{{p._id}}">修改</a></td>
+		 <td><a href="#">删除</a></td>
+	  </tr>
+	{{/each}}
+</script>
+
+  <script src="/lib/jquery/jquery-1.12.4.min.js"></script>   
+  <script src="/lib/bootstrap/js/bootstrap.min.js"></script> 
+  <script src="/lib/artTemplate/template-web.js"></script>
+  <script src="/lib/ejs/ejs.min.js"></script>
+  <script src="/js/common/LoginModal.js"></script>
+  <script src="/js/common/RegisterModal.js"></script>
+   <script src="/js/common/Header.js"></script>
+  <script src="/js/common/CommonResourceLoader.js"></script>
+  <script src="/js/pages/list/position.js"></script>
+  <script src="/js/pages/list/list.js"></script>
+</body>
+</html>

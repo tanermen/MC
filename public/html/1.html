@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				height: 100px;
+				width: 100px;
+				background: yellowgreen;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="box">
+		
+	</div>
+	<script type="text/javascript">
+		document.getElementsByTagName("html")[0].onclick=function(e){
+			
+			if(e.target.className!="box"){
+				document.getElementsByClassName("box")[0].style.display = 'none';
+			}else{
+				document.getElementsByClassName("box")[0].style.display = 'block';
+			}
+		}
+		
+		
+		
+//		document.getElementsByClassName("box")[0].onclick=function(){
+//		
+//			this.style.display = 'block';
+//		}
+	</script>
+	</body>
+</html>
